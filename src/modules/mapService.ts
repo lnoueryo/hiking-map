@@ -1,4 +1,5 @@
 import { Loader } from "@googlemaps/js-api-loader"
+// import { MAP_API_KEY } from '$env/static/private';
 declare var google;
 export class Map {
     loader = null;
@@ -7,7 +8,7 @@ export class Map {
     constructor(el) {
         this.el = el;
         this.loader = new Loader({
-            apiKey: "AIzaSyA6dralHFqtVUNRjlQSPe6EBWK8_69ycfQ",
+            apiKey: process.env.MAP_API_KEY,
             version: "weekly",
         });
         this.loader.load().then(() => {
