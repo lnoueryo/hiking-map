@@ -1,14 +1,15 @@
 import { Loader } from "@googlemaps/js-api-loader"
-// import { MAP_API_KEY } from '$env/static/private';
-declare var google;
-export class Map {
-    loader = null;
-    el = null;
-    map = null;
-    constructor(el) {
+import { env } from '$env/dynamic/public';
+import { MAP_API_KEY } from '$lib/Env';
+
+export class MainMap {
+    loader: Loader;
+    el: HTMLDivElement;
+    map: google.maps.Map;
+    constructor(el: HTMLDivElement) {
         this.el = el;
         this.loader = new Loader({
-            apiKey: process.env.MAP_API_KEY,
+            apiKey: MAP_API_KEY as string,
             version: "weekly",
         });
         this.loader.load().then(() => {
